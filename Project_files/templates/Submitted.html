@@ -1,0 +1,48 @@
+{% extends 'base.html' %}
+{% block title %}
+    Register Page
+{% endblock %}
+
+{% block content %}
+<<body class="text-center">
+    <div class="container">
+        <form method="POST" class="form-register" style="color:black">
+             {{ form.hidden_tag() }}
+            <img class="mb-4" src="https://media.licdn.com/dms/image/C4E0BAQGQ65Yl7rn-Og/company-logo_200_200/0/1612547658975?e=2147483647&v=beta&t=D96vsjRqPyG-B7LhJ6hhDX7nKS6zXvRJJ8TG1h9ceW8" alt="">
+            <h1 class="h3 mb-3 font-weight-normal">
+                Please enter the details for your AWS account
+            </h1>
+            <br>
+            {{ form.aws_username.label() }}
+            {{ form.aws_username(class="form-control", placeholder="User Name") }}
+
+            {{ form.aws_email_address.label() }}
+            {{ form.aws_email_address(class="form-control", placeholder="Email Address") }}
+
+
+            <br>
+
+            {{ form.submit(class="btn btn-lg btn-block btn-primary") }}
+
+        </form>
+        <script>
+            const formE1 = document.querySelector('.form');
+
+            formE1.addEventListener('submit', () => {
+
+                const formData = new FormData(formE1);
+                const data = object.fromEntries(formData):
+
+                fetch('http://http://127.0.0.1:8000/submitted', {
+                     method: 'POST',
+                     headers: {
+                         'Content-type': 'application/json'
+                         },
+                         body: JSON.stringify(data)
+                });
+           });
+        </script>
+    </div>
+</body>
+
+{% endblock %}
